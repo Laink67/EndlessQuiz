@@ -2,24 +2,11 @@ package com.example.endlessquiz;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +19,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +40,8 @@ public class MainActivityFragment extends Fragment {
     private static final String TAG = "FlagQuiz Activity";
 
     private static final int FLAGS_IN_QUIZ = 2;
+
+    private FragmentManager fragmentManager;
 
     private List<String> fileNameList; // Имена файлов с флагами
     private List<String> quizCountriesList; // Страны текущей викторины
@@ -65,6 +60,13 @@ public class MainActivityFragment extends Fragment {
     private LinearLayout[] guessLinearLayouts; // Строки с кнопками
     private TextView answerTextView; // Для правильного ответа
 
+    public int getTotalGuess() {
+        return totalGuess;
+    }
+
+    public int getCorrectAnswers(){
+        return correctAnswers;
+    }
 
     // Настройка MainActivityFragment при создании представления
     @Nullable
@@ -73,6 +75,8 @@ public class MainActivityFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_main_activity, container, false);
+
+        fragmentManager = getFragmentManager();
 
         fileNameList = new ArrayList<>();
         quizCountriesList = new ArrayList<>();
@@ -287,12 +291,12 @@ public class MainActivityFragment extends Fragment {
     }
 
     // Вызывается при нажатии кнопки ответа
-    private View.OnClickListener guessButtonListener = new View.OnClickListener() {
+    private final View.OnClickListener guessButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button guessButton = (Button) v;
             String guess = guessButton.getText().toString();
-            final String answer = getCountryName(correctAnswer);
+            String answer = getCountryName(correctAnswer);
             ++totalGuess; // Увеличение количества правильных ответов
 
             if (guess.equals(answer)) { // Если ответ правилен
@@ -308,29 +312,8 @@ public class MainActivityFragment extends Fragment {
                 // Если пользователь правильно угадал FLAGS_IN_QUIZ флагов
                 if (correctAnswers == FLAGS_IN_QUIZ) {
                     // DialogFragment для вывода статистики и перезапуска
-                    DialogFragment quizResults = new DialogFragment() {
-                        // Создание окна AlertDialog
-                        @NonNull
-                        @Override
-                        public Dialog onCreateDialog(@Nullable Bundle bundle) {
-                            AlertDialog.Builder builder =
-                                    new AlertDialog.Builder(getActivity());
-                            builder.setMessage(getString(R.string.results,
-                                    totalGuess,
-                                    (1000 / (double) totalGuess)));
-                            //Кнопка сброса "Reset Quiz"
-                            builder.setPositiveButton(R.string.reset_quiz,
-                                    new DialogInterface.OnClickListener() {
-                                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            resetQuiz();
-                                        }
-                                    });
-                            return builder.create(); // Вернуть AlertDialog
-                        }
-                    };
-
+                    MyDialogFragment quizResults = new MyDialogFragment();
+                    quizResults.setTargetFragment(MainActivityFragment.this, 10);
                     //Использование FragmentManager для вывода DialogFragment
                     quizResults.setCancelable(false);
                     quizResults.show(getFragmentManager(), "quiz results");
