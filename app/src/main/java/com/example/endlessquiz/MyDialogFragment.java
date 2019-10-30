@@ -12,18 +12,9 @@ import androidx.fragment.app.DialogFragment;
 public class MyDialogFragment extends DialogFragment {
     private MainActivityFragment mainActivityFragment;
 
-    public static MyDialogFragment newInstance(int title) {
-        MyDialogFragment frag = new MyDialogFragment();
-        Bundle args = new Bundle();
-        args.putInt("title", title);
-        frag.setArguments(args);
-        return frag;
-    }
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        String title = "Alert";
         mainActivityFragment = (MainActivityFragment) getTargetFragment();
         int totalGuesses = 0, correctAnswers = 0;
         if (mainActivityFragment != null) {
@@ -32,7 +23,7 @@ public class MyDialogFragment extends DialogFragment {
         }
 
         return new AlertDialog.Builder(getActivity())
-                .setTitle(title)
+                .setTitle(R.string.alert_title)
                 .setPositiveButton(getString(R.string.alert_positive),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {

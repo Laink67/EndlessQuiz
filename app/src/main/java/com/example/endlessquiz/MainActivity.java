@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.RequiresApi;
@@ -15,19 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.Set;
-import java.util.prefs.PreferenceChangeEvent;
 
 public class MainActivity extends AppCompatActivity {
 
     //Ключи для чтения данных из SharedPreference
     public static final String CHOICES = "pref_numberOfChoice";
-    public static final String REGIONS = "pref_regionsToInclude";
+    public static final String YEARS = "pref_yearsToInclude";
 
     private boolean phoneDevice = true; // Включение портретного режима
     private boolean preferenceChanged = true;
@@ -75,18 +71,18 @@ public class MainActivity extends AppCompatActivity {
                     if (key.equals(CHOICES)) { // Изменилось число вариантов
                         quizFragment.updateGuessRows(sharedPreferences);
                         quizFragment.resetQuiz();
-                    } else if (key.equals(REGIONS)) { // Изменились регионы
-                        Set<String> regions = sharedPreferences.getStringSet(REGIONS, null);
+                    } else if (key.equals(YEARS)) { // Изменились года
+                        Set<String> years = sharedPreferences.getStringSet(YEARS, null);
 
-                        if (regions != null && regions.size() > 0) {
-                            quizFragment.updateRegions(sharedPreferences);
+                        if (years != null && years.size() > 0) {
+                            quizFragment.updateYears(sharedPreferences);
                             quizFragment.resetQuiz();
                         } else {
-                            // Хотя бы один регион - по умолчанию Северная Америка
+                            // Хотя бы один раздел "года" - по умолчанию 1980s
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                            regions.add(getString(R.string.default_region));
-                            editor.putStringSet(REGIONS, regions);
+                            years.add(getString(R.string.default_year));
+                            editor.putStringSet(YEARS, years);
                             editor.apply();
 
                             Snackbar.make(quizFragment.getView(), R.string.restarting_quiz,
@@ -108,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivityFragment quizFragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.quizFragment);
 
             quizFragment.updateGuessRows(PreferenceManager.getDefaultSharedPreferences(this));
-            quizFragment.updateRegions(PreferenceManager.getDefaultSharedPreferences(this));
+            quizFragment.updateYears(PreferenceManager.getDefaultSharedPreferences(this));
             quizFragment.resetQuiz();
 
             preferenceChanged = false;

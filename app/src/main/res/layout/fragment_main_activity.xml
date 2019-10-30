@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/quizLinearLayout"
     android:layout_width="match_parent"
@@ -13,132 +14,106 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/spacing"
-        android:text="@string/question" />
+        android:text="@string/question"
+        app:layout_constraintBottom_toTopOf="@id/material_card_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/flagImageView"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/material_card_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/spacing"
-        android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/image_description"
-        android:scaleType="fitCenter" />
+        android:elevation="@dimen/card_elevation"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@id/guessCountryTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/questionNumberTextView">
+
+
+        <ImageView
+            android:id="@+id/filmImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/image_description" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/guessCountryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/guess_country" />
+        android:text="@string/guess_film"
+        app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/material_card_view" />
 
     <LinearLayout
-        android:id="@+id/row1LinearLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guessCountryTextView">
 
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
+        <LinearLayout
+            android:id="@+id/row1LinearLayout"
+            style="@style/ButtonLayout">
 
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
 
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row2LinearLayout"
+            style="@style/ButtonLayout">
+
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row3LinearLayout"
+            style="@style/ButtonLayout">
+
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row4LinearLayout"
+            style="@style/ButtonLayout">
+
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/answerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/answer_size"
+            android:textStyle="bold" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row2LinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row3LinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row4LinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:lines="2"
-            android:textColor="@color/button_text_color" />
-
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/answerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/answer_size"
-        android:textStyle="bold" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,23 +2,23 @@
 <resources>
 
 <!--    Названия регионов-->
-    <string-array name="regions_list">
-        <item>Africa</item>
-        <item>Asia</item>
-        <item>Europe</item>
-        <item>North_America</item>
-        <item>Oceania</item>
-        <item>South_America</item>
+    <string-array name="years_list">
+        <item>1940_1970s</item>
+        <item>1970s</item>
+        <item>1980s</item>
+        <item>1990s</item>
+        <item>2000s</item>
+        <item>2010s</item>
     </string-array>
 
 <!--     Значения регионов-->
-    <string-array name="regions_list_for_settings">
-        <item>Africa</item>
-        <item>Asia</item>
-        <item>Europe</item>
-        <item>North America</item>
-        <item>Oceania</item>
-        <item>South America</item>
+    <string-array name="films_list_for_settings">
+        <item>1940–1970s</item>
+        <item>1970s</item>
+        <item>1980s</item>
+        <item>1990s</item>
+        <item>2000s</item>
+        <item>2010s</item>
     </string-array>
 
 <!--    Выбор сложности (по количеству вариантов)-->

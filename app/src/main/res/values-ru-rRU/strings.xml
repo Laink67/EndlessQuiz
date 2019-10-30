@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Угадай кадр</string>
+    <string name="action_settings">Настройки</string>
+    <string name="number_of_choices">Число ответов</string>
+    <string name="number_of_choices_description">Число ответов</string>
+    <string name="film_years">Года</string>
+    <string name="film_years_description">Года производства фильмов</string>
+    <string name="guess_film">Выбери фильм</string>
+    <string name="results">%1$d попыток, %2$d верных</string>
+    <string name="incorrect_answer">Не верно</string>
+    <string name="default_film_message">Один раздел должен быть выбран</string>
+    <string name="restarting_quiz">Обновлено</string>
+    <string name="question">Кадр %1$d из %2$d</string>
+    <string name="reset_quiz">Обновление</string>
+    <string name="image_description">Картинка текущего фильма</string>
+    <string name="default_year">1980-е</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="alert_positive">OK</string>
+    <string name="alert_title">Результаты:</string>
+</resources>

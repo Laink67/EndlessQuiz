@@ -3,4 +3,5 @@
     <dimen name="spacing">8dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="answer_size">36sp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
         android:defaultValue="4"
@@ -11,12 +12,14 @@
         android:title="@string/number_of_choices" />
 
     <MultiSelectListPreference
-        android:defaultValue="@array/regions_list"
-        android:entries="@array/regions_list_for_settings"
-        android:entryValues="@array/regions_list"
-        android:key="pref_regionsToInclude"
+        android:defaultValue="@array/years_list"
+        android:entries="@array/films_list_for_settings"
+        android:entryValues="@array/years_list"
+        android:key="pref_yearsToInclude"
         android:persistent="true"
-        android:summary="@string/world_regions_description"
-        android:title="@string/world_regions" />
+        android:summary="@string/film_years_description"
+        android:title="@string/film_years"
+
+        />
 
 </PreferenceScreen>
