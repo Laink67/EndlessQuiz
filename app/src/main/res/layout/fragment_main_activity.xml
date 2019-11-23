@@ -26,10 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/spacing"
         android:elevation="@dimen/card_elevation"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toTopOf="@id/guessCountryTextView"
+        app:layout_constraintBottom_toTopOf="@id/bottom_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/questionNumberTextView">
@@ -44,26 +43,15 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:id="@+id/guessCountryTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/guess_film"
-        app:layout_constraintBottom_toTopOf="@id/bottom_layout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/material_card_view" />
-
     <LinearLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/adView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guessCountryTextView">
+        app:layout_constraintTop_toBottomOf="@id/material_card_view">
 
         <LinearLayout
             android:id="@+id/row1LinearLayout"
@@ -105,15 +93,20 @@
             <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
 
         </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/answerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:gravity="center_horizontal"
-            android:textSize="@dimen/answer_size"
-            android:textStyle="bold" />
     </LinearLayout>
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3531309073175655/1930384330"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottom_layout" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

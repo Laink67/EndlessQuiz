@@ -1,21 +1,18 @@
 package com.example.endlessquiz;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.preference.PreferenceManager;
+import android.view.Menu;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Set;
 
@@ -32,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -89,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                                     Snackbar.LENGTH_SHORT).show();
                         }
                     }
-                    Snackbar.make(quizFragment.getView(),R.string.restarting_quiz,
+                    Snackbar.make(quizFragment.getView(), R.string.restarting_quiz,
                             Snackbar.LENGTH_SHORT).show();
                 }
             };
@@ -128,11 +126,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Отображает SettingsActivity при запуске на телефоне
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent preferencesIntent = new Intent(this, SettingsActivity.class);
-        startActivity(preferencesIntent);
-        return super.onOptionsItemSelected(item);
-    }
 }

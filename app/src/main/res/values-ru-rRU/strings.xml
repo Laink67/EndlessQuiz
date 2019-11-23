@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Угадай кадр</string>
+    <string name="app_name">КиноКадры</string>
     <string name="action_settings">Настройки</string>
     <string name="number_of_choices">Число ответов</string>
     <string name="number_of_choices_description">Число ответов</string>
@@ -11,11 +11,18 @@
     <string name="incorrect_answer">Не верно</string>
     <string name="default_film_message">Один раздел должен быть выбран</string>
     <string name="restarting_quiz">Обновлено</string>
-    <string name="question">Кадр %1$d из %2$d</string>
+    <string name="question">Кадр %1$d</string>
     <string name="reset_quiz">Обновление</string>
     <string name="image_description">Картинка текущего фильма</string>
     <string name="default_year">1980-е</string>
     <string name="title_activity_settings">Настройки</string>
     <string name="alert_positive">OK</string>
     <string name="alert_title">Результаты:</string>
+    <string name="chernobyl_show_2019">Чернобыль - сериал 2019</string>
+    <string name="avengers_film">Мстители - фильм о супергкроях Марвел</string>
+    <string name="dark_knight_film">Тёмный рыцарь - фильм о Бэтмэне</string>
+    <string name="rick_and_morty">Rick and Morty</string>
+    <string name="comedy_from_ussr_about_ivan_iv">Comedy from USSR about Ivan IV</string>
+    <string name="interstellar">Interstellar</string>
+    <string name="result">Результат</string>>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
     <ListPreference
         android:defaultValue="4"
@@ -19,7 +19,6 @@
         android:persistent="true"
         android:summary="@string/film_years_description"
         android:title="@string/film_years"
-
         />
 
 </PreferenceScreen>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Endless Quiz</string>
+    <string name="app_name">MovieFrame</string>
     <string name="action_settings">Settings</string>
     <string name="number_of_choices">Number of Choices</string>
     <string name="number_of_choices_description">Number of Choices</string>
@@ -10,7 +10,7 @@
     <string name="incorrect_answer">Incorrect!</string>
     <string name="default_film_message">One film must be selected. Setting 1980s as the default yers</string>
     <string name="restarting_quiz">Quiz will restart wit</string>
-    <string name="question">Question %1$d of %2$d</string>
+    <string name="question">Question %1$d</string>
     <string name="reset_quiz">Reset Quiz</string>
     <string name="image_description">Image of the current film in the quiz</string>
     <string name="default_year">1980s</string>
@@ -18,4 +18,11 @@
 
     <string name="alert_positive">OK</string>
     <string name="alert_title">Results:</string>
+    <string name="chernobyl_show_2019">Chernobyl - show 2019</string>
+    <string name="avengers_film">Avengers - film about Marvel\'s superheroes</string>
+    <string name="dark_knight_film">Dark Knight - film about Batman</string>
+    <string name="rick_and_morty">Rick and Morty</string>
+    <string name="comedy_from_ussr_about_ivan_iv">Comedy from USSR about Ivan IV</string>
+    <string name="interstellar">Interstellar</string>
+    <string name="result">Result</string>
 </resources>

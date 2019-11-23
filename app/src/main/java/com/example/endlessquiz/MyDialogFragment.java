@@ -22,13 +22,13 @@ public class MyDialogFragment extends DialogFragment {
             totalGuesses = mainActivityFragment.getTotalGuess();
         }
 
-        return new AlertDialog.Builder(getActivity())
+        return new AlertDialog.Builder(getContext())
                 .setTitle(R.string.alert_title)
                 .setPositiveButton(getString(R.string.alert_positive),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                    mainActivityFragment.resetQuiz();
+                                    dismiss();
                                 }
                             }
                         }
