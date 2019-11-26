@@ -1,4 +1,4 @@
-package com.example.endlessquiz;
+package com.laink.filmFrame;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

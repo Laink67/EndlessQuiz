@@ -1,4 +1,4 @@
-package com.example.endlessquiz;
+package com.laink.filmFrame;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;

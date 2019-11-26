@@ -1,4 +1,4 @@
-package com.example.endlessquiz;
+package com.laink.filmFrame;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;

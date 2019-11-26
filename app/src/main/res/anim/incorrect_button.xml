@@ -1,8 +1,9 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <alpha android:fromAlpha="0.0"
         android:toAlpha="1.0"
-        android:interpolator="@android:anim/accelerate_interpolator"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
         android:duration="500"
+        android:solidColor = "@color/incorrect"
         android:repeatMode="reverse"
         android:repeatCount="3"/>
 </set>

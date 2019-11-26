@@ -88,7 +88,7 @@
             android:id="@+id/row4LinearLayout"
             style="@style/ButtonLayout">
 
-            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
+            <com.google.android.material.button.MaterialButton style="@style/AnswerButton" android:background="@color/incorrect" />
 
             <com.google.android.material.button.MaterialButton style="@style/AnswerButton" />
 

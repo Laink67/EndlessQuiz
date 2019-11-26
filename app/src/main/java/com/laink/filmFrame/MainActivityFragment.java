@@ -1,4 +1,4 @@
-package com.example.endlessquiz;
+package com.laink.filmFrame;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,7 +29,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -258,6 +262,7 @@ public class MainActivityFragment extends Fragment {
                 Button newGuessButton =
                         (Button) guessLinearLayouts[row].getChildAt(column);
                 newGuessButton.setEnabled(true);
+                newGuessButton.setClickable(true);
 
                 // Назначение названия фильма текстом newGuessButton
                 String fileName = fileNameList.get((row * 2) + column);
@@ -335,7 +340,7 @@ public class MainActivityFragment extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View v) {
-            Button guessButton = (Button) v;
+            final Button guessButton = (Button) v;
             String guess = guessButton.getText().toString();
             String answer = getFilmName(correctAnswer);
             ++totalGuess; // Увеличение количества правильных ответов
@@ -343,7 +348,7 @@ public class MainActivityFragment extends Fragment {
             if (guess.equals(answer)) { // Если ответ правилен
                 ++correctAnswers; // Увеличить количество правильных ответов
 
-                disableButtons(answer); // Блокировка всех кнопок ответов
+                disableButtons(answer, true); // Блокировка всех кнопок ответов
 
                 // Загрузка следующего фильма после двухсекундной задержки
                 handler.postDelayed(
@@ -354,18 +359,21 @@ public class MainActivityFragment extends Fragment {
                                 animate(true);// Анимация исчезновения фильма
                             }
                         }, 2100); // 2000 мс для двухсекндной задержки
-                /*               }*/
             } else { // Неправильный ответ
                 filmImageView.startAnimation(shakeAnimation); //Встряхивание
 
-                disableButtons(answer); // Блокировка всех кнопок ответов
+                disableButtons(answer, false); // Блокировка всех кнопок ответов
+
+                Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.incorrect_button);
+                guessButton.getBackground().setColorFilter(Color.parseColor(getString(R.string.colorRed)), PorterDuff.Mode.MULTIPLY);
+                guessButton.startAnimation(animation);
 
                 handler.postDelayed(
                         new Runnable() {
                             @Override
                             public void run() {
-                                loadNextFilm();
-                                /*animate(true);*///Загрузка следующего фильма
+                                loadNextFilm();   // Загрузка нового фильма
+                                guessButton.getBackground().clearColorFilter();  // Очистка цвета кнопки для неверного ответа
                             }
                         }, 2100);
             }
@@ -373,25 +381,18 @@ public class MainActivityFragment extends Fragment {
     };
 
     // Вспомогательный метод, блокирующий все кнопки
-    private void disableButtons(String answer) {
+    private void disableButtons(String answer, boolean cor) {
         for (int row = 0; row < guessRows; row++) {
             LinearLayout guessRow = guessLinearLayouts[row];
             for (int i = 0; i < guessRow.getChildCount(); i++) {
-                final Button button = (Button) guessRow.getChildAt(i);
+                Button button = (Button) guessRow.getChildAt(i);
 
                 if (button.getText().equals(answer)) {
-                    final Animation animation = AnimationUtils.loadAnimation(getContext(),
+                    Animation animation = AnimationUtils.loadAnimation(getContext(),
                             R.anim.sample);
 
+                    button.setClickable(false);
                     button.startAnimation(animation);
-
-                    handler.postDelayed(
-                            new Runnable() {
-                                @Override
-                                public void run() {
-                                    button.clearAnimation();
-                                }
-                            }, 2000);
                 } else {
                     button.setEnabled(false);
                 }

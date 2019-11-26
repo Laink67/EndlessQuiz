@@ -9,7 +9,7 @@
         android:key="pref_numberOfChoice"
         android:persistent="true"
         android:summary="@string/number_of_choices_description"
-        android:title="@string/number_of_choices" />
+        android:title="@string/answers" />
 
     <MultiSelectListPreference
         android:defaultValue="@array/years_list"

@@ -24,5 +24,7 @@
     <string name="rick_and_morty">Rick and Morty</string>
     <string name="comedy_from_ussr_about_ivan_iv">Comedy from USSR about Ivan IV</string>
     <string name="interstellar">Interstellar</string>
-    <string name="result">Результат</string>>
+    <string name="result">Результат</string>
+    <string name="answers">Ответы</string>
+    <string name="colorRed">#FF0018</string>>
 </resources>

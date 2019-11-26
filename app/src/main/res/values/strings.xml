@@ -25,4 +25,6 @@
     <string name="comedy_from_ussr_about_ivan_iv">Comedy from USSR about Ivan IV</string>
     <string name="interstellar">Interstellar</string>
     <string name="result">Result</string>
+    <string name="answers">Answers</string>
+    <string name="colorRed">#FF0018</string>
 </resources>
