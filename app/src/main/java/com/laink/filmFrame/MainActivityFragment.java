@@ -58,8 +58,6 @@ public class MainActivityFragment extends Fragment {
 
     private FragmentManager fragmentManager;
 
-    private Menu menu;
-
     private List<String> fileNameList; // Имена файлов с фильмами
     private List<String> quizFilmsList; // Фильмы текущей викторины
     private Set<String> yearsSet; // Года текущей викторины
